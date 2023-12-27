@@ -8,7 +8,6 @@ echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.
 apt-get update -y
 apt install kubelet kubeadm kubectl containerd -y
 apt-mark hold kubelet kubeadm kubectl
-
 modprobe br_netfilter
 echo "net.ipv4.ip_forward=1" >> /etc/sysctl.conf
 echo "net.bridge.bridge-nf-call-iptables=1" >> /etc/sysctl.conf
