@@ -8,3 +8,10 @@ echo 'deb [signed-by=/etc/apt/keyrings/kubernetes-apt-keyring.gpg] https://pkgs.
 apt-get update 
 apt install kubelet kubeadm kubectl containerd
 apt-mark hold kubelet kubeadm kubectl
+
+modprobe br netfilter
+echo "net.ipv4.ip_forward=1" >> /etc/sysctl.conf
+echo "net.bridge.bridge-nf-call-iptables=1" >> /etc/sysctl.conf
+echo "net.bridge.bridge-nf-call-arptables=1" >> /etc/sysctl.conf
+echo "net.bridge.bridge-nf-call-ip6tables=1" >> /etc/sysctl.conf
+echo '1' > /proc/sys/net/ipv4/ip_forward
