@@ -1,10 +1,10 @@
 resource "yandex_compute_instance_group" "k8s-cluster-group" {
   name               = "k8s-cluster"
-  service_account_id = "${var.service_account_id}"
-  folder_id = "${var.yandex_folder_id}"
+  service_account_id = var.service_account_id
+  folder_id          = var.yandex_folder_id
   instance_template {
     name = "node-{instance.index}"
-   
+
     resources {
       cores  = 2
       memory = 4
