@@ -6,9 +6,9 @@
     ## внешний адрес мастер-ноды
 
 kubeadm init \
-    --apiserver-advertise-address=192.168.10.30 \
+    --apiserver-advertise-address=192.168.10.16 \
     --pod-network-cidr 10.244.0.0/16 \
-    --apiserver-cert-extra-sans=51.250.79.71 \
+    --apiserver-cert-extra-sans=62.84.117.81 \
 
 mkdir $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
