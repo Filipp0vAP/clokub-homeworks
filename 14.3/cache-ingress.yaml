@@ -19,13 +19,3 @@ spec:
           port: 80
         - protocol: TCP
           port: 443
-  egress:
-    - to:
-        - podSelector:
-            matchLabels:
-              app: cache
-      ports:
-        - protocol: TCP
-          port: 80
-        - protocol: TCP
-          port: 443
