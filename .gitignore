@@ -75,3 +75,4 @@ terraform.rc
 key.json
 users
 variables.tf
+id_rsa.pub
