@@ -1,6 +1,6 @@
 resource "yandex_compute_instance" "nat-instance" {
   name     = var.nat-instance-name
-  hostname = "${var.nat-instance-name}.${var.domain}"
+  hostname = "${var.nat-instance-name}"
   zone     = var.a-zone
 
   resources {
@@ -30,7 +30,7 @@ resource "yandex_compute_instance" "nat-instance" {
 
 resource "yandex_compute_instance" "public-vm" {
   name     = var.public-vm-name
-  hostname = "${var.public-vm-name}.${var.domain}"
+  hostname = "${var.public-vm-name}"
   zone     = var.a-zone
 
   resources {
@@ -59,7 +59,7 @@ resource "yandex_compute_instance" "public-vm" {
 
 resource "yandex_compute_instance" "private-vm" {
   name     = var.private-vm-name
-  hostname = "${var.private-vm-name}.${var.domain}"
+  hostname = "${var.private-vm-name}"
   zone     = var.a-zone
 
   resources {
