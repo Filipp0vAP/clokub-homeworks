@@ -17,7 +17,7 @@ spec:
       - command:
         - sh
         - -c
-        - while true; do curl auth-db; sleep 5; done
+        - while true; do curl auth-db.data; sleep 5; done
         image: radial/busyboxplus:curl
         name: busybox
 ---
