@@ -8,8 +8,8 @@ spec:
   strategy:
     type: RollingUpdate
     rollingUpdate:
-      maxSurge: 20%
-      maxUnavailable: 20%
+      maxSurge: 75%
+      maxUnavailable: 75%
   selector:
     matchLabels:
       app: app-deployment
@@ -23,9 +23,6 @@ spec:
         image: nginx:1.19
         ports:
         - containerPort: 80
-        volumeMounts:
-          - name: nginx-html
-            mountPath: /usr/share/nginx/html/
       - name: multitool
         image: wbitt/network-multitool
         env:
@@ -33,8 +30,20 @@ spec:
           value: "8080"
         ports:
         - containerPort: 8080
-      volumes:
-      - name: nginx-html
-        configMap:
-          name: app1-cmap
+...
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: app-svc
+spec:
+  selector:
+    app: app-deployment
+  ports:
+    - name: nginx-port
+      port: 80
+      targetPort: 80
+    - name: multitool-port
+      port: 8080
+      targetPort: 8080
 ...
