@@ -1,13 +1,15 @@
 resource "yandex_compute_instance_group" "k8s-cluster-group" {
-  name               = "k8s-cluster"
-  service_account_id = var.service_account_id
-  folder_id          = var.yandex_folder_id
+  name                = "k8s-cluster"
+  service_account_id  = var.service_account_id
+  folder_id           = var.yandex_folder_id
+  deletion_protection = false
   instance_template {
     name = "node-{instance.index}"
 
     resources {
-      cores  = 2
-      memory = 4
+      cores         = 2
+      memory        = 4
+      core_fraction = 20
     }
 
     boot_disk {
@@ -24,7 +26,8 @@ resource "yandex_compute_instance_group" "k8s-cluster-group" {
     }
 
     metadata = {
-      ssh-keys = "ubuntu:${file("/host/netology/id_rsa.pub")}"
+      serial-port-enable = 1
+      ssh-keys           = "ubuntu:${file("../id_rsa.pub")}"
     }
   }
   scale_policy {
