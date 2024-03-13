@@ -32,7 +32,7 @@ spec:
         env:
         - name: PMA_USER
           value: "netology"
-        - name: PMA_PASSWORD 
+        - name: PMA_PASSWORD
           value: ""
         - name: PMA_HOST
           value: "rc1a-khit577op6wmp8k1.mdb.yandexcloud.net"
